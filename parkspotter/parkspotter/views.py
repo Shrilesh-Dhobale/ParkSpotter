@@ -30,6 +30,9 @@ def user_registration(request):
         if UserRegistration.objects.filter(email=email).exists():
             messages.error(request, "Email is already registered.")
             return redirect('user_registration')
+        if UserRegistration.objects.filter(phone=phone).exists():
+            messages.error(request, "Phone number is already registered.")
+            return redirect('user_registration')
         
 
 def earning_report(request):
