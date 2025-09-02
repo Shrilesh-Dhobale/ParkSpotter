@@ -28,11 +28,11 @@ def user_registration(request):
         confirm_password = request.POST.get('confirm_password')
         if password != confirm_password:
             return render(request, 'user_registration.html', {'error': 'Passwords do not match.'})
-        user = User.objects.create_user(username=email, email=email, password=password)
-        user.profile.full_name = name
-        user.profile.phone = phone
+        user = User.objects.create_user(username=name, email=email, password=password)
+
+    
         user.save()
-        return render(request, 'user_registration.html', {'success': 'User registered successfully.'})
+        return HttpResponse("User registered successfully.")
 
     return render(request, 'user_registration.html')
 
