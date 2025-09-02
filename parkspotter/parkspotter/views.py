@@ -42,6 +42,7 @@ def user_registration(request):
         )
         messages.success(request, "Registration successful.")
         return redirect('login')
+    return render(request, 'user_registration.html')    
 
 def earning_report(request):
     return render(request, 'earning_report.html')
