@@ -1,9 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-
-@login_required
+from django.shortcuts import render,redirect
+from django.contrib import messages
 def index(request):
     data={
         'title': 'Dashboard'
