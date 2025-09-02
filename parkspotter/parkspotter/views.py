@@ -33,7 +33,15 @@ def user_registration(request):
         if UserRegistration.objects.filter(phone=phone).exists():
             messages.error(request, "Phone number is already registered.")
             return redirect('user_registration')
-        
+
+        UserRegistration.objects.create(
+            full_name=full_name,
+            email=email,
+            phone=phone,
+            password=password
+        )
+        messages.success(request, "Registration successful.")
+        return redirect('login')
 
 def earning_report(request):
     return render(request, 'earning_report.html')
