@@ -7,41 +7,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
-    <link rel="stylesheet" href="../static/css/user_registration.css">
+    <link rel="stylesheet" href="{% static 'css/user_registration.css' %}">
     </head>
 
 <body>
     <div class="container">
         <h2>User Registration</h2>
-        <form id="registrationForm" method="post">
+        <form id="registrationForm" method="post" novalidate>
             {% csrf_token %}
         
             <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="full_name" id="name" placeholder="Enter your name">
+                <label for="name">Full Name</label>
+                <input type="text" name="full_name" id="name" placeholder="Enter your name" required>
             </div>
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
-                <label>Phone Number</label>
-                <input type="text" name="phone" id="phone" placeholder="Enter your phone number">
+                <label for="phone">Phone Number</label>
+                <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required>
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter password">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter password" required autocomplete="new-password">
             </div>
             <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" id="confirmPassword" placeholder="Confirm password">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirmPassword" placeholder="Confirm password" required autocomplete="new-password">
             </div>
             <p class="error" id="errorMessage"></p>
             <button type="submit" class="btn">Register</button>
             <p class="success" id="successMessage"></p>
         </form>
     </div>
-    <script src="{% static 'js/registration.js' %}"></script>
+    <script src="{% static 'js/registration.js' %}" defer></script>
 </body>
 
 </html>
