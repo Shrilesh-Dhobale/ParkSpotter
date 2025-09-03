@@ -22,10 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', views.index, name='index'),#Site url
     path('new_entry/', views.new_entry, name='new_entry'),#New entry url
-    path('', views.login, name='login'),#Login url
+
     path('recipt/', views.recipt, name='recipt'),#Recipt url
     path('earning_report/', views.earning_report, name='earning_report'),#Earning report url
     path('user_registration/', include('accounts.urls')),
-    path('login/', include('accounts.urls')),
+    path('', include('accounts.urls')),
 
 ]
