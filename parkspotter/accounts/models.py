@@ -8,4 +8,5 @@ class UserRegistration(models.Model):
     phone = models.CharField(max_length=15, unique=True)
     password = models.CharField(max_length=100)
 
-    
+    def __str__(self):
+        return self.full_name
