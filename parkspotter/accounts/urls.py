@@ -1,1 +1,1 @@
-from django.contrib import admin
+from django.ursl import path
