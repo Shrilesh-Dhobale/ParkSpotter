@@ -29,3 +29,20 @@ def user_registration(request):
         messages.success(request, "Registration successful.")
         return redirect('login')
     return render(request, 'user_registration.html')
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        try:
+            user = UserRegistration.objects.get(email=email, password=password)
+            messages.success(request, "Login successful.")
+            return redirect('dashboard')
+        except UserRegistration.DoesNotExist:
+            messages.error(request, "Invalid email or password.")
+            return redirect('login')
+    return render(request, 'login.html')
+
+
+
+
