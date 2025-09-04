@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import UserRegistration
 from django.contrib import messages
+from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
 
 def user_registration(request):
@@ -24,7 +25,7 @@ def user_registration(request):
             full_name=full_name,
             email=email,
             phone=phone,
-            password=password
+            password=make_password(password)
         )
         messages.success(request, "Registration successful.")
         return redirect('login')
@@ -35,14 +36,13 @@ def login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         try:
-            user = UserRegistration.objects.get(email=email, password=password)
-            messages.success(request, "Login successful.")
-            return redirect('dashboard')
+            user = UserRegistration.objects.get(email=email)
+            if check_password(password, user.password):
+                messages.success(request, "Login successful.")
+                return redirect('index') # Corrected redirect name
+            else:
+                raise UserRegistration.DoesNotExist
         except UserRegistration.DoesNotExist:
             messages.error(request, "Invalid email or password.")
             return redirect('login')
     return render(request, 'login.html')
-
-
-
-
