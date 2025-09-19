@@ -7,11 +7,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def recipt(request,entry_id):
     entry=get_object_or_404(NewEntry,id=entry_id)
-    
-    if not entry.is_paid:
-        return render(request, 'recipt.html', {
-            'error': 'Payment not completed. Please pay the bill to get the receipt.'
-        })
+
     rates = {
         'Bike': 30,
         'Car': 80,
