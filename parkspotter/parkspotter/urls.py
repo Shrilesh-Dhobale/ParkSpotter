@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', views.index, name='dashboard'),#Site url
-    path('new_entry/', include('newEntries.urls'), name='new_entry'),#New entry url
+    path('', include('newEntries.urls'), name='new_entry'),#New entry url
 
     path('recipt/', include('receipts.urls'), name='recipt'),#Recipt url
     path('earning_report/', views.earning_report, name='earning_report'),#Earning report urlit

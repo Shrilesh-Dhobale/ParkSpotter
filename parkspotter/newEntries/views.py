@@ -31,7 +31,12 @@ def new_entry(request):
             is_paid=is_paid
         )
 
-        messages.success(request, "Entry added successfully!")
-        return redirect('recipt', entry_id=entry.id)
+        if entry.is_paid:
+            messages.success(request, "Entry paid and added successfully!")
+            return redirect('recipt', entry_id=entry.id)
+        else:
+            messages.success(request, "Entry added successfully! Payment pending.")
+            return redirect('new_entry') 
+
     return render(request, 'new_entry.html')
     

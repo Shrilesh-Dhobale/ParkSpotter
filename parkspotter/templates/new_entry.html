@@ -4,16 +4,12 @@
 
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Entry</title>
     <link rel="stylesheet" href="{% static 'css/new_entry.css' %}">
    
-</head>
-<body>
+
     
     <div class="container">
         <div class="form-header">
@@ -24,7 +20,7 @@
             {% csrf_token %}
             <div class="form-group">
                 <label for="plateNumber">Plate number:</label>
-                <input type="text" id="plateNumber" class="form-control" placeholder="Enter plate number">
+                <input type="text" id="plateNumber" name="plateNumber"" class="form-control" placeholder="Enter plate number">
             </div>
              <div class="vehicle-type-section">
                 <label style="font-weight: 500; font-size: 14px; color: #666;">Vehicle type:</label>
@@ -40,15 +36,14 @@
              <div class="form-group">
                 <label for="entryTime">Entry time:</label>
                 <div class="datetime-group">
-                    <input type="datetime-local" id="entryTime" class="form-control datetime-input" value="2025-06-19T11:57">
+                    <input type="datetime-local" id="entryTime" class="form-control datetime-input" name="entryTime" value="2025-06-19T11:57">
                     <div class="calendar-icon"></div>
                 </div>
             </div>
             
              <div class="checkbox-group">
                 <label for="isPaid" class="checkbox-label">Is paid:</label>
-                <input type="checkbox" id="isPaid" class="checkbox">
-                
+                <input type="checkbox" id="isPaid" name="isPaid" class="checkbox">
             </div>
              <div class="divider"></div>
 
@@ -57,6 +52,5 @@
     </div>
      <script src="{% static 'js/new_entry.js' %}"></script>
      
-</body>
-</html>
+
 {% endblock %}
