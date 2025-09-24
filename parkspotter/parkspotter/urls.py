@@ -23,7 +23,7 @@ urlpatterns = [
     path('dashboard/', views.index, name='dashboard'),#Site url
     path('', include('newEntries.urls'), name='new_entry'),#New entry url
 
-    path('recipt/', include('receipts.urls'), name='recipt'),#Recipt url
+    path('receipt/', include('receipts.urls'), name='receipt'),#Receipt url
     path('earning_report/', views.earning_report, name='earning_report'),#Earning report urlit
     path('accounts/', include('accounts.urls')), # Include accounts app URLs
     path('', include('accounts.urls')),#Django auth urls

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required
-def recipt(request,entry_id):
+def receipt(request,entry_id):
     entry=get_object_or_404(NewEntry,id=entry_id)
 
     rates = {
@@ -24,4 +24,4 @@ def recipt(request,entry_id):
         'rate': rate,
         'amount': amount,
     }
-    return render(request, 'recipt.html', context)
+    return render(request, 'receipt.html', context)
