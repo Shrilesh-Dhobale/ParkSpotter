@@ -1,12 +1,14 @@
-
 {% load static %}
-
+<!DOCTYPE html>
+<html>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt</title>
     <link rel="stylesheet" href="{% static 'css/receipt.css' %}">
-     
-
+</head>
+<body>
+<div class="receipt-container">
   <div class="receipt">
      <div class="header">
             <div class="company-name">SECURE PARKING</div>
@@ -49,4 +51,7 @@
       </div>
   </div>
 </div>
+</div>
   <script src="{% static 'js/receipt.js' %}"></script>
+</body>
+</html>

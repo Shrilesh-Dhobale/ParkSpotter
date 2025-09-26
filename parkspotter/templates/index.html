@@ -40,7 +40,7 @@
         </tr>
       </thead>
       <tbody>
-        
+        {% for entry in entries %}
         <tr>
           <td>HP78A2911</td>
           <td>Car</td>
@@ -102,6 +102,7 @@
             <button class="action-btn edit">Edit</button>
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
 

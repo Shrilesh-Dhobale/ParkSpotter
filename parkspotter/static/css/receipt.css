@@ -1,13 +1,10 @@
- body {
-            font-family: 'Courier New', monospace;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+ .receipt-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', monospace; 
+}
  .receipt {
             background-color: white;
             width: 350px;
