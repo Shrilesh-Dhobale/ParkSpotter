@@ -1,55 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParkSpotter - Detect Vehicle</title>
-    <link rel="stylesheet" href="../static/css/detect_vehicle.css">
-    </head>
+    <title>Document</title>
+</head>
 <body>
-    <div class="container">
-        <h1 class="main-title">Detect Vehicle</h1>
-        <p class="subtitle">Use AI to detect vehicles in parking area</p>
-        <div class="button-group">
-            <button class="btn btn-primary" onclick="uploadImage()">Upload Image</button>
-            <button class="btn btn-secondary" onclick="openCamera()">Open Camera</button>
-        </div>
-        <div class="upload-area" id="uploadArea">
-            <img id="imagePreview" class="hidden" alt="Preview">
-            <video id="videoPreview" class="hidden" autoplay playsinline></video>
-            <div id="uploadText" class="upload-text">
-                Drag and drop an image here or use the buttons above
-            </div>
-        </div>
-        <button class="btn btn-detect" id="detectBtn" onclick="detectVehicle()" disabled>
-            <span id="loadingSpinner" class="loading hidden"></span>
-            Detect Vehicle
-        </button>
-        <div class="result hidden" id="result">
-            <h2 class="result-title">Vehicle Found</h2>
-            <div class="result-details">
-                AI analysis has successfully detected a vehicle in the provided image.
-            </div>
-        </div>
-        <div class="vehicle-info">
-                <div class="info-item">
-                    <div class="info-label">Vehicle Type</div>
-                    <div class="info-value" id="vehicleType">Car</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Confidence</div>
-                    <div class="info-value" id="confidence">95%</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Location</div>
-                    <div class="info-value" id="location">Parking Spot A-15</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Timestamp</div>
-                    <div class="info-value" id="timestamp">--</div>
-                </div>
-        </div>
-    </div>
+<div class="container">
+    <h1>Detect License Plate</h1>
+    <p>Point your camera at a license plate and click capture.</p>
+    
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    
+    {% csrf_token %}
+    <button id="capture-btn">Capture & Process</button>
+    <div id="error-div" class="error-message"></div>
+</div>
 </body>
 </html>
