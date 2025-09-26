@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% block content %}
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detect</title>
+    <link rel="stylesheet" href="../../css/detect.css">
 </head>
 <body>
 <div class="container">
@@ -17,5 +19,4 @@
     <button id="capture-btn">Capture & Process</button>
     <div id="error-div" class="error-message"></div>
 </div>
-</body>
-</html>
+{% endblock %}
