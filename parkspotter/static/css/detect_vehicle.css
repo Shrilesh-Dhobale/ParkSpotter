@@ -16,3 +16,6 @@
         border: none;
         border-radius: 5px;
     }
+ #capture-btn:disabled {
+        background-color: #6c757d;
+    }
