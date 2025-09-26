@@ -45,8 +45,14 @@ def new_entry(request):
                 is_paid=is_paid
             )
 
-            # 5. Return a JSON response with the new entry's ID so the frontend can redirect.
-            return JsonResponse({'entry_id': entry.id})
+            # 5. Return a JSON response with the new entry's ID
+            # This is what your JavaScript's 'then(data => ...)' block will receive
+            if entry.is_paid:
+                 return JsonResponse({'entry_id': entry.id})
+            else:
+                # Handle the unpaid case if needed, for now we can just return success
+                # Or you could return a different value and handle it in JS
+                return JsonResponse({'success': True, 'message': 'Entry created successfully.'})
 
 
         except json.JSONDecodeError:
