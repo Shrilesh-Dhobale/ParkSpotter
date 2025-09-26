@@ -1,1 +1,8 @@
 .container { text-align: center; margin-top: 2rem; }
+ #video { 
+        border: 2px solid #ddd; 
+        border-radius: 8px; 
+        width: 100%;
+        max-width: 640px; 
+        background-color: #000;
+    }
