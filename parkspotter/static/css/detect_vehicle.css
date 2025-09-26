@@ -19,3 +19,4 @@
  #capture-btn:disabled {
         background-color: #6c757d;
     }
+ .error-message { color: red; margin-top: 1rem; font-weight: bold; }
