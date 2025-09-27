@@ -1,0 +1,20 @@
+databases:
+  - name: parkspotter
+    databaseName: parkspotter
+    user: parkspotter
+
+services:
+  - type: web
+    name: parkspotter
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn parkspotter.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: parkspotter
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
