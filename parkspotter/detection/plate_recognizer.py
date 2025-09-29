@@ -52,3 +52,8 @@ def recognize_and_store_plate():
         except Exception as e:
             pass
     cv2.imshow('Webcam Feed', frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+   
