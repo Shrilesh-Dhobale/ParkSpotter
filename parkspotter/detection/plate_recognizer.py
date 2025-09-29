@@ -26,3 +26,6 @@ def recognize_and_store_plate():
 
     while True:
         ret, frame = cap.read()
+        if not ret:
+            print("Error: Could not read frame from camera.")
+            break
