@@ -17,4 +17,6 @@ def recognize_and_store_plate():
     plate_cascade_path=cv2.data.haarcascades + 'haarcascade_russian_plate_number.xml'
     plate_cascade = cv2.CascadeClassifier(plate_cascade_path)
 
-    
+    if plate_cascade.empty():
+        print("Error: Could not load the cascade classifier.")
+        return
