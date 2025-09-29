@@ -29,3 +29,4 @@ def recognize_and_store_plate():
         if not ret:
             print("Error: Could not read frame from camera.")
             break
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
