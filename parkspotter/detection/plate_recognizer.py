@@ -23,3 +23,6 @@ def recognize_and_store_plate():
 
     stored_plates= set()
     print("Starting webcam feed. Press 'q' to exit.")
+
+    while True:
+        ret, frame = cap.read()
