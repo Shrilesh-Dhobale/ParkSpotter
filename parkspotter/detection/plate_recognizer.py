@@ -44,4 +44,8 @@ def recognize_and_store_plate():
             #-c tessedit_char_whitelist: Restrict characters to alphanumeric
         try:
             plate_text = pytesseract.image_to_string(plate_thresh, config=config).strip()
-    
+            if re.match(r'^[A-Z0-9]+$', plate_text):
+                if plate_text not in stored_plates:
+                    stored_plates.add(plate_text)
+                    print("Detected Plate:", plate_text)
+                    print("Stored Plates:", stored_plates)
