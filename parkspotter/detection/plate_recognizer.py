@@ -59,3 +59,4 @@ def recognize_and_store_plate():
 cap.release()
 cv2.destroyAllWindows()
 
+print
