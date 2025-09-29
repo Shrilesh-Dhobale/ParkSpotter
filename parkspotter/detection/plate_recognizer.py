@@ -31,3 +31,6 @@ def recognize_and_store_plate():
             break
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         plates = plate_cascade.detectMultiScale(gray,scaleFactor=1.2, minNeighbors=5, minSize=(25, 25))
+
+        for(x,y,w,h) in plates:
+            cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
