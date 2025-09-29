@@ -49,3 +49,5 @@ def recognize_and_store_plate():
                     stored_plates.add(plate_text)
                     print("Detected Plate:", plate_text)
                     print("Stored Plates:", stored_plates)
+        except Exception as e:
+            pass
