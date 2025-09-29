@@ -36,3 +36,5 @@ def recognize_and_store_plate():
             cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
 
             plate_roi = gray[y:y+h, x:x+w]
+
+            _, plate_image = cv2.threshold(plate_roi, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
