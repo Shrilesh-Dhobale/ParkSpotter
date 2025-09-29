@@ -42,4 +42,6 @@ def recognize_and_store_plate():
             config= '--psm 8 --oem 3 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
             #--psm 8 treat image as single word
             #-c tessedit_char_whitelist: Restrict characters to alphanumeric
-            
+        try:
+            plate_text = pytesseract.image_to_string(plate_thresh, config=config).strip()
+    
