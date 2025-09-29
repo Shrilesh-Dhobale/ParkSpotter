@@ -20,3 +20,6 @@ def recognize_and_store_plate():
     if plate_cascade.empty():
         print("Error: Could not load the cascade classifier.")
         return
+
+    stored_plates= set()
+    print("Starting webcam feed. Press 'q' to exit.")
