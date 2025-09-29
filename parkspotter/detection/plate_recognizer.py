@@ -13,3 +13,5 @@ def recognize_and_store_plate():
     if not cap.isOpened():
         print("Error: Could not open camera.")
         return
+
+    plate_cascade_path=cv2.data.haarcascades + 'haarcascade_russian_plate_number.xml'
