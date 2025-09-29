@@ -34,3 +34,5 @@ def recognize_and_store_plate():
 
         for(x,y,w,h) in plates:
             cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+
+            plate_roi = gray[y:y+h, x:x+w]
