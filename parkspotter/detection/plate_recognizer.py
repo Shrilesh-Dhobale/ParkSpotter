@@ -7,3 +7,6 @@ try:
 except FileNotFoundError:
     print("Tesseract OCR executable not found.")
     exit()
+
+def recognize_and_store_plate():
+    cap = cv2.VideoCapture(0)
