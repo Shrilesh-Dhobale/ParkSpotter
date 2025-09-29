@@ -51,3 +51,4 @@ def recognize_and_store_plate():
                     print("Stored Plates:", stored_plates)
         except Exception as e:
             pass
+    cv2.imshow('Webcam Feed', frame)
