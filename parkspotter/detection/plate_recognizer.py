@@ -38,3 +38,8 @@ def recognize_and_store_plate():
             plate_roi = gray[y:y+h, x:x+w]
 
             _, plate_image = cv2.threshold(plate_roi, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+            config= '--psm 8 --oem 3 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+            #--psm 8 treat image as single word
+            #-c tessedit_char_whitelist: Restrict characters to alphanumeric
+            
