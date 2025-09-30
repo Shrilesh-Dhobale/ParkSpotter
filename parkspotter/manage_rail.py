@@ -5,7 +5,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'parkspotter.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'parkspotter.settings_rail')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

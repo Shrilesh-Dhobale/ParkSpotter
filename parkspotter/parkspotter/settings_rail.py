@@ -1,4 +1,4 @@
-from parskpotter.settings import *
+from parkspotter.settings import *
 from decouple import config
 
 SECRET_KEY = config('SECRET_KEY')
