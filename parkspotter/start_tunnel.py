@@ -2,7 +2,7 @@ from pyngrok import ngrok
 
 # --- THIS IS THE LINE YOU WRITE ---
 # IMPORTANT: Change 8000 to the actual port your local server is using.
-public_url = ngrok.connect(8000).public_url
+public_url = ngrok.connect(2005).public_url
 
 print("✅ ngrok tunnel is live at:")
 print(public_url)
