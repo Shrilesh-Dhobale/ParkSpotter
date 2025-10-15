@@ -2,6 +2,16 @@ import cv2
 import pytesseract
 import re
 import os
+import django
+from django.conf import settings
+
+# Setup Django environment
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'parkspotter.settings')
+django.setup()
+
+from detection.models import DetectedPlate
+from newEntries.models import NewEntry
+from datetime import datetime
 
 try:
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -58,8 +68,22 @@ def recognize_and_store_plate():
                         stored_plates.add(plate_text)
                         print("Detected Plate:", plate_text)
                         print("Stored Plates:", stored_plates)
+
+                        # Save to DetectedPlate model
+                        detected_plate, created = DetectedPlate.objects.get_or_create(plate_number=plate_text)
+                        if created:
+                            print(f"New plate {plate_text} saved to database.")
+
+                        # Automatically create NewEntry with default values
+                        if not NewEntry.objects.filter(plate_number=plate_text).exists():
+                            NewEntry.objects.create(
+                                plate_number=plate_text,
+                                vehicle_type='Car',  # Default vehicle type
+                                entry_time=datetime.now(),
+                                is_paid=False
+                            )
+                            print(f"New entry created for plate {plate_text}.")
             except Exception as e:
-                pass
         cv2.imshow('Webcam Feed', frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
