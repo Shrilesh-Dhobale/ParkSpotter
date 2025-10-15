@@ -74,7 +74,15 @@ def recognize_and_store_plate():
                         if created:
                             print(f"New plate {plate_text} saved to database.")
 
-                        
+                        # Automatically create NewEntry with default values
+                        if not NewEntry.objects.filter(plate_number=plate_text).exists():
+                            NewEntry.objects.create(
+                                plate_number=plate_text,
+                                vehicle_type='Car',  # Default vehicle type
+                                entry_time=datetime.now(),
+                                is_paid=False
+                            )
+                            print(f"New entry created for plate {plate_text}.")
             except Exception as e:
         cv2.imshow('Webcam Feed', frame)
 
