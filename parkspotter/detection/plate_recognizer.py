@@ -1,6 +1,7 @@
 import cv2
 import pytesseract
 import re
+import os
 
 try:
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -9,12 +10,20 @@ except FileNotFoundError:
     exit()
 
 def recognize_and_store_plate():
-    cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        print("Error: Could not open camera.")
+    # Try to open camera, starting from index 0 up to 9
+    cap = None
+    for i in range(10):
+        cap = cv2.VideoCapture(i)
+        if cap.isOpened():
+            print(f"Camera opened successfully at index {i}.")
+            break
+        else:
+            print(f"Failed to open camera at index {i}.")
+    else:
+        print("Error: Could not open any camera.")
         return
 
-    plate_cascade_path=cv2.data.haarcascades + 'haarcascade_russian_plate_number.xml'
+    plate_cascade_path = os.path.join(os.path.dirname(__file__), 'haarcascade_russian_plate_number.xml')
     plate_cascade = cv2.CascadeClassifier(plate_cascade_path)
 
     if plate_cascade.empty():
@@ -58,4 +67,7 @@ def recognize_and_store_plate():
 
     cap.release()
     cv2.destroyAllWindows()
+
+if __name__ == '__main__':
+    recognize_and_store_plate()
 
