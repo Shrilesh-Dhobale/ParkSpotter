@@ -42,21 +42,20 @@ def recognize_and_store_plate():
             config= '--psm 8 --oem 3 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
             #--psm 8 treat image as single word
             #-c tessedit_char_whitelist: Restrict characters to alphanumeric
-        try:
-            plate_text = pytesseract.image_to_string(plate_thresh, config=config).strip()
-            if re.match(r'^[A-Z0-9]+$', plate_text):
-                if plate_text not in stored_plates:
-                    stored_plates.add(plate_text)
-                    print("Detected Plate:", plate_text)
-                    print("Stored Plates:", stored_plates)
-        except Exception as e:
-            pass
-    cv2.imshow('Webcam Feed', frame)
+            try:
+                plate_text = pytesseract.image_to_string(plate_image, config=config).strip()
+                if re.match(r'^[A-Z0-9]+$', plate_text):
+                    if plate_text not in stored_plates:
+                        stored_plates.add(plate_text)
+                        print("Detected Plate:", plate_text)
+                        print("Stored Plates:", stored_plates)
+            except Exception as e:
+                pass
+        cv2.imshow('Webcam Feed', frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
-cap.release()
-cv2.destroyAllWindows()
+    cap.release()
+    cv2.destroyAllWindows()
 
-print
